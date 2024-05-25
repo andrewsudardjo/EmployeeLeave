@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -34,6 +39,7 @@
 </html>
 
 <?php
+    session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Database configuration
         $dsn = 'mysql:host=localhost;dbname=mydb';
@@ -42,7 +48,7 @@
 
         // Get form data
         $username = $_POST['username'];
-        $password = md5($_POST['password']); // Using MD5 for simplicity, consider using stronger hashing like bcrypt
+        $password = $_POST['password'];
 
         try {
             // Connect to the database
@@ -50,17 +56,32 @@
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Prepare and execute the query to fetch the user
-            $stmt = $pdo->prepare('SELECT * FROM user WHERE username = :username AND password = :password');
-            $stmt->execute(['username' => $username, 'password' => $password]);
+            $stmt = $pdo->prepare('SELECT * FROM user WHERE username = :username');
+            $stmt->execute(['username' => $username]);
 
             // Fetch the user
-            $user = $stmt->fetch();
-            if ($user) {
-                echo "<p style='color: green;'>Login successful! Welcome, " . $user['username'] . ".</p>";
-                // Redirect to a welcome page or perform other actions after successful login
-            } else {
-                echo "<p style='color: red;'>Invalid username or password.</p>";
-            }
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($user) {	
+                if (password_verify($password, $user['password'])) {
+       			$_SESSION['user_id'] = $user['id'];
+			$_SESSION['username'] = $user['username'];
+                        $_SESSION['role'] = $user['role'];
+
+			if($user['role'] == 'admin'){
+				header('Location: admin.php');
+			}else{
+				header('Location: apply-leave.php');
+			}
+			exit();
+			
+    	    	}else {
+       			 echo "<p style='color: red;'>Password verification failed.</p>";
+    	    	}			
+	   }else{
+		echo "<p style='color: red;'>username not found</p>";
+    	   }
+            
+
         } catch (PDOException $e) {
             die("Could not connect to the database: " . $e->getMessage());
         }
