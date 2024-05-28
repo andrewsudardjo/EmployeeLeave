@@ -22,6 +22,7 @@
         // Get form data
         $username = $_POST['username'];
         $password = $_POST['password'];
+	$hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
         try {
             // Connect to the database
@@ -38,7 +39,7 @@
             } else {
                 // Insert new user into the database
                 $stmt = $pdo->prepare('INSERT INTO user (username, password) VALUES (:username, :password)');
-                $stmt->execute(['username' => $username, 'password' => md5($password)]);
+                $stmt->execute(['username' => $username, 'password' => $hashed_password]);
 
                 echo "<p style='color: green;'>Registration successful! You can now login with your new account.</p>";
             }
