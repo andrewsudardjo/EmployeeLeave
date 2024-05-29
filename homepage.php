@@ -5,7 +5,6 @@ session_start();
 
 
 <!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
