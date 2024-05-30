@@ -1,3 +1,6 @@
+/*
+This code is for showing the list of username only 
+*/
 <?php
 session_start();
 
@@ -8,7 +11,6 @@ $db_password = '1234';
 try{
 	$pdo = new PDO($dsn, $db_user, $db_password);
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	echo "test";
 	$stmt = $pdo->prepare('SELECT id, username FROM user');
 	$stmt->execute();
 
