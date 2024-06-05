@@ -26,7 +26,7 @@ session_start();
             <i class="fas fa-lock"></i>
             <input id="password" name="password" type="password" placeholder="Password" required>
           </div>
-          <div class="pass"><a href="#">Forgot password?</a></div>
+          <div class="pass"><a href="forgotpass.php">Forgot password?</a></div>
           <div class="row button">
             <input type="submit" value="Login">
           </div>
