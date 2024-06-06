@@ -19,7 +19,13 @@
             $stmt = $pdo->prepare('INSERT INTO user (username, password) VALUES (:username, :password)');
             $stmt->execute(['username' => $username, 'password' => $hashed_password]);
 
-            echo "<p style='color: green;'>Registration successful! You can now login with your new account.</p>";
+            echo '<script>
+                    setTimeout(function() {
+                        window.location.href = "homepage.php";
+                    }, 2000);
+                </script>';
+            
+            echo '<p style="color: green;">Registration successful. Redirecting to homepage...</p>';
         }
         
     }
