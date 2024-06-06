@@ -1,34 +1,24 @@
 
 <?php
-session_start();
+    session_start();
+    include "dbconnect.php";
     
-$dsn = 'mysql:host=localhost;dbname=mydb';
-$username = 'myapp';
-$password = '1234';
-$user_id = $_SESSION['user_id'];
-try {
-	
- 	$pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){           
-		$from_date = $_POST['fromdate'];
-		$to_date = $_POST['todate'];
-		$reason = $_POST['reason'];
-			    	
-	     	$stmt = $pdo->prepare('INSERT INTO leaveapp (user_id, from_date, to_date, reason) VALUES (:user_id, :from_date, :to_date, :reason)');
- 		$stmt->execute(['user_id' => $user_id, 'from_date' => $from_date, 'to_date' => $to_date, 'reason' => $reason]);       
-		echo "<p style='color: green;'>Leave application submitted successfully.</p>";
-	}
-	
-	$test = $pdo->prepare('SELECT reason, from_date, to_date, status FROM leaveapp WHERE user_id = :user_id ORDER BY from_date DESC');
-        
-	$test->execute(['user_id' => $user_id]);
-	$leave_requests = $test->fetchAll(PDO::FETCH_ASSOC);
-	
-} catch (PDOException $e) {
-        die("Connection failed: " . $e->getMessage());
-}
+    $user_id = $_SESSION['user_id'];
 
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){           
+        $from_date = $_POST['fromdate'];
+        $to_date = $_POST['todate'];
+        $reason = $_POST['reason'];
+                    
+        $stmt = $pdo->prepare('INSERT INTO leaveapp (user_id, from_date, to_date, reason) VALUES (:user_id, :from_date, :to_date, :reason)');
+        $stmt->execute(['user_id' => $user_id, 'from_date' => $from_date, 'to_date' => $to_date, 'reason' => $reason]);       
+        echo "<p style='color: green;'>Leave application submitted successfully.</p>";
+    }
+
+    $test = $pdo->prepare('SELECT reason, from_date, to_date, status FROM leaveapp WHERE user_id = :user_id ORDER BY from_date DESC');
+        
+    $test->execute(['user_id' => $user_id]);
+    $leave_requests = $test->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
