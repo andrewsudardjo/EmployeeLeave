@@ -1,0 +1,84 @@
+/* register.css */
+
+/* General reset for padding and margin */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1f3f4;
+}
+
+/* Container for the register page */
+.register-page {
+    background-color: #fff;
+    padding: 40px 50px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+}
+
+/* Title styling */
+.register-page h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: #202124;
+}
+
+/* Label styling */
+.register-page label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #202124;
+    text-align: left;
+}
+
+/* Input field styling */
+.register-page input[type="text"],
+.register-page input[type="password"] {
+    width: 100%;
+    padding: 16px 14px;
+    margin: 12px 0;
+    display: inline-block;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #202124;
+    background-color: #fff;
+}
+
+.register-page input[type="text"]:focus,
+.register-page input[type="password"]:focus {
+    border-color: #1a73e8;
+    outline: none;
+}
+
+/* Submit button styling */
+.register-page button[type="submit"] {
+    width: 100%;
+    background-color: #1a73e8;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0 0 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.register-page button[type="submit"]:hover {
+    background-color: #185abc;
+}
