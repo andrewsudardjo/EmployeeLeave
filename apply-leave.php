@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="applyLeave.css" rel="stylesheet">
+  <title>Employee | Apply Leave</title>
+</head>
+<body>
 
 <?php
 session_start();
@@ -30,15 +37,6 @@ try {
 }
 
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Employee | Apply Leave</title>
-</
-head>
-<body>
     <h1>Apply for leave</h1>
     <form method="post">        
             <label for="fromdate">From Date</label>
@@ -96,3 +94,4 @@ head>
 
 </body>
 </html>
+

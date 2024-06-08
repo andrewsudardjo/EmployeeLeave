@@ -2,8 +2,10 @@
 <html>
 <head>
     <title>Register</title>
+	<link href="register.css" rel="stylesheet">
 </head>
 <body>
+	<div class="register-page">
     <h2>Register</h2>
     <form method="POST" action="">
         <label for="username">Username:</label>

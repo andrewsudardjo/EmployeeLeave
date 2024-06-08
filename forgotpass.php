@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
     <title>Forgot Password</title>
+	<link href="forgotpass.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Forgot password</h1>
-    <form method="POST" action="#">
-        <input type="text" id="username" name="username" placeholder="username/email">
-        <br>
-        <input type="text" id="newpass" name="newpass" placeholder="New password">
-        <br>
-        <button type="submit" name="change">Submit</button>
-        <p>Back to <a href="homepage.php">login page?</a></p>
-    </form>
-
+    <div class="forgot-password-page">
+        <h1>Forgot password</h1>
+        <form method="POST" action="#">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <br>
+            <input type="password" id="newpass" name="newpass" placeholder="New password" required>
+            <br>
+            <button type="submit" name="change">Submit</button>
+            <p>Back to <a href="homepage.php">login page?</a></p>
+</div>    
+</form>
     <?php
     session_start();
     if($_SERVER['REQUEST_METHOD']=='POST') {
