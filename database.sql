@@ -34,8 +34,7 @@ CREATE TABLE `leaveapp` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `leaveapp_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_genera
-l_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,8 +80,7 @@ CREATE TABLE `user` (
   `role` varchar(10) DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_genera
-l_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,8 +90,7 @@ l_ci;
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(1,'charlie','$2y$10$9dnzrdCvQ5AoHf77o86X6efqWPhfwB9Xpv3AEtONQ8N3am4OJBhcS','adm
-in'),
+(1,'charlie','$2y$10$9dnzrdCvQ5AoHf77o86X6efqWPhfwB9Xpv3AEtONQ8N3am4OJBhcS','admin'),
 (2,'asu','$2y$10$m9wF5QEPF869NUeRAhrCDupjhTBXo2yzjbZ0gGhs9E.kEELqTECIG','user'),
 (3,'test','$2y$10$mikMCncAHiSvAQfMaxHdvObptL0RrrMD7CQyNQVkhuEs6RfAW8vHC','user')
 ,
