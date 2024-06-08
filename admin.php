@@ -1,17 +1,11 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header('Location: homepage.php');
-    exit();
-}
-
-$dsn = 'mysql:host=localhost;dbname=mydb';
-$db_user = 'myapp';
-$db_password = '1234';
-
-try {
-    $pdo = new PDO($dsn, $db_user, $db_password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    session_start();
+    include "dbconnect.php";
+    
+    if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+        header('Location: homepage.php');
+        exit();
+    }
 
     if (isset($_POST['action']) && isset($_POST['leave_id'])) {
         $action = $_POST['action'];
@@ -27,9 +21,7 @@ try {
   			 JOIN user u ON lr.user_id = u.id 
   			 WHERE lr.status = "pending"');
     $leave_requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Could not connect to the database: " . htmlspecialchars($e->getMessage()));
-}
+
 ?>
 
 <!DOCTYPE html>
