@@ -17,19 +17,13 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Database configuration
-        $dsn = 'mysql:host=localhost;dbname=mydb';
-        $db_user = 'myapp';
-        $db_password = '1234';
-
+        include "dbconnect.php";
         // Get form data
         $username = $_POST['username'];
         $password = $_POST['password'];
 	$hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-        try {
-            // Connect to the database
-            $pdo = new PDO($dsn, $db_user, $db_password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   
 
             // Check if the username already exists
             $stmt = $pdo->prepare('SELECT * FROM user WHERE username = :username');
@@ -45,10 +39,8 @@
 
                 echo "<p style='color: green;'>Registration successful! You can now login with your new account.</p>";
             }
-        } catch (PDOException $e) {
-            die("Could not connect to the database: " . $e->getMessage());
-        }
-    }
+        } 
+    
     ?>
 </body>
 </html>
