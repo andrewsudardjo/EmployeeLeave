@@ -36,3 +36,22 @@ Additional Features
 * Password Reset: If users forget their password, they can select the "forgot password" option, which redirects them to a page where they can enter their username and set a new password. This updates the password in the database.
 * Login: After registration or resetting a password, users can log in to their account where they can access features based on their role (user or admin).
 
+
+Installation procedure:
+
+1. we need to download both PHP and MariaDB.
+3. to download the PHP we will use this command
+   '''
+   sudo apt install php php-mysql
+   '''
+5. We can then verify the installation by typing php -v.
+6. next is to donwload mariaDB, we can do so by using the command:
+7. sudo apt update
+8. sudo apt install mariadb-server
+9. sudo systemctl start mariadb
+   sudo systemctl enable mariadb
+10. sudo mysql_secure_installation
+11. then in mySQL we need to create a database.
+12. we first type mysql; // to enter the mysql command line.
+11.then we create a database named mydb, by writing CREATE DATABSE mydb;
+13. then we can exit the
