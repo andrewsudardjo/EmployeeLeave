@@ -39,19 +39,50 @@ Additional Features
 
 Installation procedure:
 
-1. we need to download both PHP and MariaDB.
+1. open your terminal and clone the directory
+```
+   git clone https://github.com/andrewsudardjo/EmployeeLeave/
+   cd EmployeeLeave
+```
+
+2. we need to download both PHP and MariaDB.
 3. to download the PHP we will use this command
-   '''
+```
    sudo apt install php php-mysql
-   '''
-5. We can then verify the installation by typing php -v.
-6. next is to donwload mariaDB, we can do so by using the command:
-7. sudo apt update
-8. sudo apt install mariadb-server
-9. sudo systemctl start mariadb
-   sudo systemctl enable mariadb
-10. sudo mysql_secure_installation
-11. then in mySQL we need to create a database.
-12. we first type mysql; // to enter the mysql command line.
-11.then we create a database named mydb, by writing CREATE DATABSE mydb;
-13. then we can exit the
+```
+4. We can then verify the installation by typing
+```
+   php -v
+```
+   
+5. next is to donwload and enable mariaDB, we can do so by using the command
+```
+sudo apt update
+sudo apt install mariadb-server
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+
+```
+
+6. then in mySQL we need to create a user . we can do so by entering the MYSQL query,
+```
+   mysql;
+   CREATE USER myapp IDENTIFIED BY '1234';
+   
+```
+7.then we create a database named mydb
+```
+  CREATE DATABASE mydb;
+   exit;
+```
+
+8. We import the SQL dump
+```
+    mysql -u myapp -p mydb < database.sql;
+```
+
+RUNNING THE APPLICATION
+
+1. Open you web browser
+2. Navigate to `http://localhost/EmployeeLeave/` or the URL configured to your project.
+   
