@@ -38,15 +38,21 @@ Additional Features
 
 
 Installation procedure:
+1. Make sure to have an up-to-date system
+   . Use the apt command to achieve the task
+```
+   sudo apt update
+   sudo apt full-upgrade
+   sudo apt clean
+```
 
-1. open your terminal and clone the directory
+2. Open your terminal and clone the directory
 ```
    git clone https://github.com/andrewsudardjo/EmployeeLeave/
    cd EmployeeLeave
 ```
 
-2. we need to download both PHP and MariaDB.
-3. to download the PHP we will use this command
+3. To download the PHP we will use this command
 ```
    sudo apt install php php-mysql
 ```
@@ -55,7 +61,7 @@ Installation procedure:
    php -v
 ```
    
-5. next is to donwload and enable mariaDB, we can do so by using the command
+5. Next is to donwload and enable mariaDB, we can do so by using the command
 ```
 sudo apt update
 sudo apt install mariadb-server
@@ -64,13 +70,13 @@ sudo systemctl enable mariadb
 
 ```
 
-6. then in mySQL we need to create a user . we can do so by entering the MYSQL query,
+6. Then in mySQL we need to create a user . we can do so by entering the MYSQL query,
 ```
    mysql;
    CREATE USER myapp IDENTIFIED BY '1234';
    
 ```
-7.then we create a database named mydb
+7.Then we create a database named mydb
 ```
   CREATE DATABASE mydb;
    exit;
